@@ -1,2 +1,53 @@
+
+
 .app-title {
-display: left;}
+float: left; 
+display: inline;
+padding-left: 40px;
+margin-right: 40px;
+}
+
+.newRoom-button {
+background-color: yellow; 
+font-size: 16px;
+float: left; 
+display: inline;
+margin-top: 20px;
+margin-right: 40px;
+
+
+}
+
+.section1 {
+float: left;
+background-color: gray; 
+display: block;
+
+}
+
+.room-column {
+float: left; 
+display: block; 
+
+}
+
+.clear {
+clear: both;
+}
+
+ul {
+list-style-type: none;
+}
+
+li {
+}
+
+.roomButtons{
+background-color: black;
+width: 105px;
+height: 30px;
+font-size: 14px;
+color: white; 
+margin: 5px;
+}
+

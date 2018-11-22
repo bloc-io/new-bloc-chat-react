@@ -1,0 +1,26 @@
+.username {
+	font-size: 12px;
+	font-weight: bold;
+	display: inline;
+	float: left;
+}
+
+
+.message-content {
+	margin-top: 6px;
+	font-size: 12px; 
+	color: white; 
+}
+
+.sent-time {
+	margin-left: 280px;
+	font-size: 12px;
+
+}
+
+.one-message {
+	margin-bottom: 30px;
+	width: 310px;
+	margin-right: 30px;
+}
+
