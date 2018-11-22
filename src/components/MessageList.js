@@ -42,7 +42,11 @@ class MessageList extends Component {
 		});
 
 		const mapThrough = filteredVersion.map(message=> {
-			return <li key={message.index}>username: {message.username}--- message:{message.content} (sent at){message.sentAt}</li>
+			return <li key={message.content}>
+				username: {message.username}--- 
+				message:{message.content} 
+				(sent at){message.sentAt}
+				</li>
 		});
 		return (
 			<div>

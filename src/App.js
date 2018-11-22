@@ -69,7 +69,7 @@ render() {
       		
       		<MessageList 
 				  firebase={firebase}
-				  handleRoomClick={this.handleRoomClick}
+				 
 				  activeRoom={this.state.activeRoom}
 				  handleRoomClick={this.handleRoomClick.bind(this)}
 			/>
@@ -81,19 +81,6 @@ render() {
 			/>
       	
       	</div>
-      
-      
-      
-     
-    
-      
-    
-
-
-      	
-     
-      
-      
       </div>
     );
   }
