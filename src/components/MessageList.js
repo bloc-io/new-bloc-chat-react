@@ -30,12 +30,13 @@ class MessageList extends Component {
 			return null;
 		}
 		else {
-			this.state.currentMessageRoom = this.props.activeRoom;
+			this.setState({currentMessageRoom: this.props.activeRoom});
+		
 		}
 	}
 
 	render() {
-		const currentMRoom = this.props.activeRoom.name; 
+		
 		
 		const filteredVersion = this.state.messages.filter(message=> {
 			return message.roomId === this.props.activeRoom.name

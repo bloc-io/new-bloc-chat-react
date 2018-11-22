@@ -29,9 +29,7 @@ class App extends Component {
 				{name: ''},
 				{key: ''}
 			],
-			user: [
-				{displayName: 'Guest'},
-			],
+			user: null
 		}; 
 		
 		this.handleRoomClick = this.handleRoomClick.bind(this);	
@@ -69,7 +67,6 @@ render() {
       		
       		<MessageList 
 				  firebase={firebase}
-				 
 				  activeRoom={this.state.activeRoom}
 				  handleRoomClick={this.handleRoomClick.bind(this)}
 			/>
