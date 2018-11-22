@@ -5,6 +5,7 @@ import RoomList  from './components/RoomList';
 import MessageList from './components/MessageList';
 import './styles/RoomList.css';
 import './styles/MessageList.css';
+import User from './components/User';
 
 
 
@@ -27,7 +28,10 @@ class App extends Component {
 			activeRoom: [
 				{name: ''},
 				{key: ''}
-			]
+			],
+			user: [
+				{displayName: 'Guest'},
+			],
 		}; 
 		
 		this.handleRoomClick = this.handleRoomClick.bind(this);	
@@ -39,6 +43,11 @@ class App extends Component {
 		console.log(room);
 		console.log("the new active room is ", room);
 		
+	}
+
+	setUser(user){
+		this.setState({user: user});
+
 	}
 	
 	
@@ -63,6 +72,12 @@ render() {
 				  handleRoomClick={this.handleRoomClick}
 				  activeRoom={this.state.activeRoom}
 				  handleRoomClick={this.handleRoomClick.bind(this)}
+			/>
+
+			<User	
+				firebase={firebase}
+				user= {this.state.user}
+				setUser={this.setUser.bind(this)}
 			/>
       	
       	</div>
