@@ -11,6 +11,7 @@ class MessageList extends Component {
 			sentAt: '',
 			roomId:'',
 			currentMessageRoom: '',
+			
 		};
 	
 	this.messagesRef = this.props.firebase.database().ref('messages');
@@ -31,13 +32,16 @@ class MessageList extends Component {
 		}
 		else {
 			this.setState({currentMessageRoom: this.props.activeRoom});
-		
 		}
 	}
 
+	createNewMessage(messageText){
+		this.messagesRef.push({
+
+		})
+	}
+
 	render() {
-		
-		
 		const filteredVersion = this.state.messages.filter(message=> {
 			return message.roomId === this.props.activeRoom.name
 		});
