@@ -30,19 +30,24 @@ class MessageList extends Component {
 			return null;
 		}
 		else {
-			this.state.currentMessageRoom = this.props.activeRoom;
+			this.setState({currentMessageRoom: this.props.activeRoom});
+		
 		}
 	}
 
 	render() {
-		const currentMRoom = this.props.activeRoom.name; 
+		
 		
 		const filteredVersion = this.state.messages.filter(message=> {
 			return message.roomId === this.props.activeRoom.name
 		});
 
 		const mapThrough = filteredVersion.map(message=> {
-			return <li key={message.index}>username: {message.username}--- message:{message.content} (sent at){message.sentAt}</li>
+			return <li key={message.content}>
+				username: {message.username}--- 
+				message:{message.content} 
+				(sent at){message.sentAt}
+				</li>
 		});
 		return (
 			<div>

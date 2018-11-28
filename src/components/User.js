@@ -6,7 +6,7 @@ class User extends Component {
 
     this.signInWithPopup=this.signInWithPopup.bind(this);
     this.signOut=this.signOut.bind(this);
-    const provider = new this.props.firebase.auth.GoogleAuthProvider();
+  
 
     }
     
@@ -15,9 +15,6 @@ class User extends Component {
             this.props.setUser(user);
         });
         
-        if (this.props.user == null){
-        	this.props.setGuest();
-        }
         
     }
 
@@ -33,6 +30,7 @@ class User extends Component {
     }
     
     
+
 	render() {
 		let uiDisplayName = this.props.user; 
 		if (uiDisplayName == null){
@@ -52,6 +50,7 @@ class User extends Component {
 				
 			
     
+
     );
   }
 }
