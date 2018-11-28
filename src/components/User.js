@@ -14,6 +14,11 @@ class User extends Component {
         this.props.firebase.auth().onAuthStateChanged( user => {
             this.props.setUser(user);
         });
+        
+        if (this.props.user == null){
+        	this.props.setGuest();
+        }
+        
     }
 
     signInWithPopup(){
@@ -24,9 +29,11 @@ class User extends Component {
 
     signOut(){
         this.props.firebase.auth().signOut();
+      
     }
     
     
+<<<<<<< HEAD
   render() {
       const currentUser =this.props.user;
  
@@ -37,6 +44,27 @@ class User extends Component {
         <button onClick={this.signInWithPopup}>Sign In</button>
         <button onClick={this.signOut}> Sign Out</button>
         </div>
+=======
+	render() {
+		let uiDisplayName = this.props.user; 
+		if (uiDisplayName == null){
+			uiDisplayName = 'anonymous';
+		}
+		else {
+			uiDisplayName = this.props.user.displayName;
+		}
+		
+		return ( 
+			<div>
+				<h3>Current User: {uiDisplayName}</h3> 
+				<button onClick={this.signInWithPopup}> Sign In</button> 
+				<button onClick={this.signOut}> Sign Out</button> 
+			
+			</div>
+				
+			
+    
+>>>>>>> checkpoint-5-set-username
     );
   }
 }
