@@ -15,9 +15,6 @@ class User extends Component {
             this.props.setUser(user);
         });
         
-        if (this.props.user == null){
-        	this.props.setGuest();
-        }
         
     }
 
@@ -33,18 +30,7 @@ class User extends Component {
     }
     
     
-<<<<<<< HEAD
-  render() {
-      const currentUser =this.props.user;
- 
-      
-    return ( 
-       <div>
-        <h3>Current User:</h3>{currentUser}
-        <button onClick={this.signInWithPopup}>Sign In</button>
-        <button onClick={this.signOut}> Sign Out</button>
-        </div>
-=======
+
 	render() {
 		let uiDisplayName = this.props.user; 
 		if (uiDisplayName == null){
@@ -64,7 +50,7 @@ class User extends Component {
 				
 			
     
->>>>>>> checkpoint-5-set-username
+
     );
   }
 }
