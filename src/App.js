@@ -65,10 +65,8 @@ render() {
       	
       	</div>
       	<div className="section-2">
-      		
       		<MessageList 
 				  firebase={firebase}
-				  handleRoomClick={this.handleRoomClick}
 				  activeRoom={this.state.activeRoom}
 				  handleRoomClick={this.handleRoomClick.bind(this)}
 			/>
