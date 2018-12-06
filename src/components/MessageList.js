@@ -5,16 +5,20 @@ class MessageList extends Component {
 	constructor(props){
 		super(props);
 		this.state= {
-			messages: [],	
-			username: '',
-			content: '',
-			sentAt: '',
-			roomId:'',
+			messages: [{
+				username: '',
+				content: '',
+				sentAt: '',
+				roomId:''
+			}
+			],
 			currentMessageRoom: '',
+			newMessageContent: '',
 			
-		};
+					};
 	
 	this.messagesRef = this.props.firebase.database().ref('messages');
+	this.pushNewMessage = this.pushNewMessage.bind(this);
 	
 	}
 	
@@ -23,7 +27,7 @@ class MessageList extends Component {
 		const message = snapshot.val();
 		message.key= snapshot.key;
 		this.setState({ messages: this.state.messages.concat( message )})
-		});
+		});	
 	}
 
 	changeCurrentMessageRoom(){
@@ -35,33 +39,58 @@ class MessageList extends Component {
 		}
 	}
 
-	createNewMessage(messageText){
-		this.messagesRef.push({
-
-		})
+	pushNewMessage(e){
+		e.preventDefault();
+		console.log('click on a room first');
+		const msg= {
+			username: this.props.userData.displayName,
+			content: this.state.newMessageContent,
+			roomId: this.props.activeRoom.name,
+			sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
+			key: this.state.newMessageContent		
+		 } 
+		this.messagesRef.push({msg});			
 	}
-
+	
+	handleTextChange(e){
+		e.preventDefault();
+		this.setState({newMessageContent: e.target.value});
+	}
+	
+	
 	render() {
 		const filteredVersion = this.state.messages.filter(message=> {
 			return message.roomId === this.props.activeRoom.name
 		});
 
 		const mapThrough = filteredVersion.map(message=> {
-			return <li key={message.content}>
-				username: {message.username}--- 
-				message:{message.content} 
-				(sent at){message.sentAt}
+					<li key={message.content}>
+					<p>username: {message.username}</p>
+					<p>message:{message.content}</p>
+					<p>(sent at){message.sentAt}</p>
 				</li>
+			
 		});
+		
+		
 		return (
 			<div>
-			<h1> Current Room ---- {this.props.activeRoom.name}</h1>
-		
-			{mapThrough}
+				<h1> Current Room ---- {this.props.activeRoom.name}</h1>
+				
+				{mapThrough}
 			
+			<form onSubmit={(e)=>this.pushNewMessage(e)}>
+				<input type="text"
+					value={this.state.newMessageContent}
+					placeholder="Your Message"
+					onChange={(e)=>this.handleTextChange(e)}
+				/>
+				<input type="submit"
+					value="Send"
+				/>
+			</form>
+				
 			
-			
-		
 			</div>
 		);
 	}
