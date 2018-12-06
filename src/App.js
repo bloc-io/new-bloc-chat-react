@@ -33,6 +33,7 @@ class App extends Component {
 		}; 
 		
 		this.handleRoomClick = this.handleRoomClick.bind(this);	
+		this.setUser = this.setUser.bind(this);
 	}
 	
 	
@@ -69,6 +70,7 @@ render() {
 				  firebase={firebase}
 				  activeRoom={this.state.activeRoom}
 				  handleRoomClick={this.handleRoomClick.bind(this)}
+				  userData={this.state.user}
 			/>
 
 			<User	

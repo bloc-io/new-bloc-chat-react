@@ -17,8 +17,6 @@ class RoomList extends Component {
    
 
     componentDidMount() {
-        
-
         this.roomsRef.on('child_added', snapshot => {
             const room = snapshot.val(); 
             room.key= snapshot.key;   
@@ -53,7 +51,6 @@ class RoomList extends Component {
     return (
         <div>
         <ul>{roomList}</ul>
-
         <form onSubmit={this.createNewRoom}>
         <input type="text" placeholder="room name" value={this.state.newRoomName} onChange={(e)=>this.handleChange(e)}/>
         <input type="submit" value="Create"/>
