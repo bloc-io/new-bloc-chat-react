@@ -6,16 +6,18 @@ class User extends Component {
 
     this.signInWithPopup=this.signInWithPopup.bind(this);
     this.signOut=this.signOut.bind(this);
-  
-
     }
     
     componentDidMount(){
         this.props.firebase.auth().onAuthStateChanged( user => {
             this.props.setUser(user);
+
+        });     
+
         });
         
         
+
     }
 
     signInWithPopup(){
@@ -25,6 +27,11 @@ class User extends Component {
 
 
     signOut(){
+
+        this.props.firebase.auth().signOut();  
+    }
+    
+
         this.props.firebase.auth().signOut();
       
     }
@@ -44,12 +51,17 @@ class User extends Component {
 			<div>
 				<h3>Current User: {uiDisplayName}</h3> 
 				<button onClick={this.signInWithPopup}> Sign In</button> 
+
+				<button onClick={this.signOut}> Sign Out</button> 	
+			</div>  
+
 				<button onClick={this.signOut}> Sign Out</button> 
 			
 			</div>
 				
 			
     
+
 
     );
   }
