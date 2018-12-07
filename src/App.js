@@ -49,6 +49,8 @@ class App extends Component {
 	}
 	
 	
+	
+	
 render() {
     return (
       <div className="App">
@@ -64,7 +66,6 @@ render() {
       	
       	</div>
       	<div className="section-2">
-      		
       		<MessageList 
 				  firebase={firebase}
 				  activeRoom={this.state.activeRoom}
@@ -80,6 +81,10 @@ render() {
 			/>
       	
       	</div>
+      	}
+      
+    
+      
       </div>
     );
   }
