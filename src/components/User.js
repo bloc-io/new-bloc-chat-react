@@ -12,12 +12,20 @@ class User extends Component {
         this.props.firebase.auth().onAuthStateChanged( user => {
             this.props.setUser(user);
 
+<<<<<<< HEAD
+=======
+        });     
+
+>>>>>>> c3446a2393d977130bec138759dffe0c38019a6a
         });
         
         
 
+<<<<<<< HEAD
         });     
 
+=======
+>>>>>>> c3446a2393d977130bec138759dffe0c38019a6a
     }
 
     signInWithPopup(){
@@ -28,15 +36,26 @@ class User extends Component {
 
     signOut(){
 
+<<<<<<< HEAD
+=======
+        this.props.firebase.auth().signOut();  
+    }
+    
+
+>>>>>>> c3446a2393d977130bec138759dffe0c38019a6a
         this.props.firebase.auth().signOut();
       
     }
     
+<<<<<<< HEAD
 
         this.props.firebase.auth().signOut();  
     }
     
 
+=======
+    
+>>>>>>> c3446a2393d977130bec138759dffe0c38019a6a
 
 	render() {
 		let uiDisplayName = this.props.user; 
@@ -52,14 +71,23 @@ class User extends Component {
 				<h3>Current User: {uiDisplayName}</h3> 
 				<button onClick={this.signInWithPopup}> Sign In</button> 
 
+<<<<<<< HEAD
+=======
+				<button onClick={this.signOut}> Sign Out</button> 	
+			</div>  
+
+>>>>>>> c3446a2393d977130bec138759dffe0c38019a6a
 				<button onClick={this.signOut}> Sign Out</button> 
 			
 			</div>
 				
 			
     
+<<<<<<< HEAD
 				<button onClick={this.signOut}> Sign Out</button> 	
 			</div>  
+=======
+>>>>>>> c3446a2393d977130bec138759dffe0c38019a6a
 
 
     );
