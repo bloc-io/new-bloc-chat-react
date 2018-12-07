@@ -38,18 +38,30 @@ class MessageList extends Component {
 			this.setState({currentMessageRoom: this.props.activeRoom});
 		}
 	}
+	
 
 	pushNewMessage(e){
 		e.preventDefault();
-		console.log('click on a room first');
-		const msg= {
-			username: this.props.userData.displayName,
-			content: this.state.newMessageContent,
-			roomId: this.props.activeRoom.name,
-			sentAt: this.props.firebase.database.ServerValue.TIMESTAMP,
-			key: this.state.newMessageContent		
-		 } 
-		this.messagesRef.push({msg});			
+		if (this.props.userData === null){
+			console.log("please sign in");
+		}
+		
+		else {
+			if (this.currentMessageRoom === " "){
+				console.log('click on a room first');
+				console.log(this.state.currentMessageRoom);
+			} 
+			else {
+				var newMessageKey = firebase.database().ref.child('messages').push().key;
+				const msg = {
+					username: this.props.userData.displayName, 
+					content: this.state.newMessageContent,
+					roomId: this.state.currentMessageRoom
+				} 
+				console.log(msg);
+				this.messagesRef.push(msg);
+			}
+		}	
 	}
 	
 	handleTextChange(e){
@@ -82,14 +94,14 @@ class MessageList extends Component {
 				{mapThrough}
 			
 			<form onSubmit={(e)=>this.pushNewMessage(e)}>
-				<input type="text"
-					value={this.state.newMessageContent}
-					placeholder="Your Message"
-					onChange={(e)=>this.handleTextChange(e)}
-				/>
-				<input type="submit"
-					value="Send"
-				/>
+			<input type="text"
+				value={this.state.newMessageContent}
+				placeholder="Your Message"
+				onChange={(e)=>this.handleTextChange(e)}
+			/>
+			<input type="submit"
+				value="Send"
+			/>
 			</form>
 				
 			

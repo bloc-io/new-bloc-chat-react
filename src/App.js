@@ -70,6 +70,7 @@ render() {
 				  activeRoom={this.state.activeRoom}
 				  handleRoomClick={this.handleRoomClick.bind(this)}
 				  userData={this.state.user}
+		
 			/>
 
 			<User	
