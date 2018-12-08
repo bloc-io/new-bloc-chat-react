@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 
 class User extends Component {
     constructor(props){
@@ -11,14 +12,8 @@ class User extends Component {
     componentDidMount(){
         this.props.firebase.auth().onAuthStateChanged( user => {
             this.props.setUser(user);
-
-        });     
-
-        });
-        
-        
-
-    }
+		});     
+	}
 
     signInWithPopup(){
         const provider = new this.props.firebase.auth.GoogleAuthProvider();
@@ -32,9 +27,6 @@ class User extends Component {
     }
     
 
-        this.props.firebase.auth().signOut();
-      
-    }
     
     
 
@@ -53,7 +45,7 @@ class User extends Component {
 				<button onClick={this.signInWithPopup}> Sign In</button> 
 
 				<button onClick={this.signOut}> Sign Out</button> 	
-			</div>  
+		
 
 				<button onClick={this.signOut}> Sign Out</button> 
 			
