@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
+
 
 
 class MessageList extends Component {
@@ -46,14 +46,12 @@ class MessageList extends Component {
 		if (this.props.userData === null){
 			console.log("please sign in");
 		}
-		
 		else {
 			if (this.currentMessageRoom === " "){
 				console.log('click on a room first');
 				console.log(this.state.currentMessageRoom);
 			} 
 			else {
-				var newMessageKey = firebase.database().ref.child('messages').push().key;
 				const msg = {
 					username: this.props.userData.displayName, 
 					content: this.state.newMessageContent,

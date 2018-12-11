@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from 'firebase';
+
 
 class User extends Component {
     constructor(props){

@@ -12,6 +12,7 @@ class RoomList extends Component {
     this.roomsRef= this.props.firebase.database().ref('rooms');
     this.handleChange = this.handleChange.bind(this);
     this.createNewRoom = this.createNewRoom.bind(this);
+    this.deleteRoom = this.deleteRoom.bind(this);
     }
 
 componentDidMount() {
@@ -22,28 +23,42 @@ componentDidMount() {
     });
 }
     
-    handleClickSegway(room){
-        this.props.handleRoomClick(room);
-        console.log('click! segway');
-    }
+handleClickSegway(room){
+	this.props.handleRoomClick(room);
+    console.log('click! segway');
+}
 
-    handleChange(e){
-        this.setState({newRoomName: e.target.value});
-    }
+handleChange(e){
+    this.setState({newRoomName: e.target.value});
+}
 
-    createNewRoom(e){
-        e.preventDefault();
-        this.roomsRef.push({
-            name: this.state.newRoomName
-        });
-        this.setState({newRoomName: " "});
-    }
+createNewRoom(e){
+    e.preventDefault();
+    this.roomsRef.push({
+    	name: this.state.newRoomName
+    });
+    this.setState({newRoomName: " "});
+}
+
+deleteRoom(e){
+	const roomsList = this.state.rooms.slice(); 
+	const oneToDelete = roomsList[e.target.value];
+	const updatedRoomsList = roomsList.filter(room => {
+		return room !== oneToDelete}
+	);
+	this.setState({rooms: updatedRoomsList});
+}
 
 
   render() {
         const roomList = this.state.rooms.map((room) =>
-            <li key ={room.key} onClick= {()=>this.props.handleRoomClick(room)}>{room.name}</li>
+            <li key ={room.key} onClick={()=>this.props.handleRoomClick(room)}>
+            {room.name}
+            <button onClick={(e)=>this.deleteRoom(e)}>Delete</button> 
+            </li>
         );
+        
+    	
       
     return (
         <div>
